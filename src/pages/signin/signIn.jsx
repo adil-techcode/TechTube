@@ -91,7 +91,7 @@ const SignIn = () => {
 
          setTimeout(()=>{    
           setLoading(false);
-          navigate("courses")
+          navigate("/courses")
          },1000)
         
 

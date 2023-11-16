@@ -8,13 +8,26 @@ import Dropdown from "react-bootstrap/Dropdown";
 import logo from "../../assests/logo.png";
 import styles from "./header.module.css";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Header = ({ fixed }) => {
+
+  const navigate = useNavigate();
   var user;
   try {
     user = JSON.parse(localStorage.getItem("user"));
   } catch (error) {
     console.log(error);
+  }
+
+
+  const signout = () => {
+   
+    const confirmLogout = window.confirm("Are you sure you want to logout?");
+    if(confirmLogout){
+      localStorage.removeItem("user");
+      navigate("/signin")
+    }
   }
 
   return (
@@ -79,7 +92,7 @@ const Header = ({ fixed }) => {
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
-                  <Dropdown.Item href="#/action-1"> Logout </Dropdown.Item>
+                  <Dropdown.Item onClick={signout}  > Logout </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
             </div>

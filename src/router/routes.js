@@ -26,6 +26,18 @@ const ProtectedRoute = ({ element: Element }) => {
 
 };
 
+
+const AuthRoute = ({ element: Element }) => {
+    try{
+        const user = JSON.parse(localStorage.getItem("user")); // Parse the user data from localStorage
+        return user ? <Navigate to="/courses" /> :  <Element />;
+    }
+    catch(error){
+        return <Navigate to="/signin" />;
+    }
+
+};
+
 const AdminRoute = ({ element: Element }) => {
   const user = JSON.parse(localStorage.getItem("user"));
   if (user) {
@@ -56,11 +68,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/signin",
-    element: <SignIn />,
+    element:   <AuthRoute element={SignIn} /> ,
   },
   {
     path: "/signup",
-    element: <Signup />,
+    element: <AuthRoute element={Signup} />  ,
   },
   {
     path: "/courses",
