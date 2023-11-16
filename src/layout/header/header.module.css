@@ -1,0 +1,25 @@
+.dropdownBody {
+  background: none !important;
+  border: none !important;
+  color: black !important;
+  font-weight: 600 !important;
+  font-size: 1.2rem !important;
+}
+
+.dropdownBox div {
+  right: 5% !important;
+  left: unset !important;
+}
+
+.signinBtn {
+  background-color: var(--primary-color) !important;
+  border: 1px solid var(--primary-color) !important;
+}
+
+.signupBtn {
+  border: 1px solid var(--primary-color) !important;
+}
+
+.signupBtn:hover {
+  background-color: var(--primary-color) !important;
+}
