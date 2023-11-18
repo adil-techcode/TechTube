@@ -1,0 +1,67 @@
+.heroSectionP2 {
+  background-image: url("../../assests/home/shape-001.png");
+  background-repeat: no-repeat;
+  background-position: top right;
+  /* background-size:contain; */
+  height: calc(100vh - 76px);
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.heroSectionSvg {
+  width: 100%;
+  height: 80%;
+}
+
+.heroSectionSvg svg {
+  width: 400px;
+}
+
+
+
+
+.heroSectionP1{
+
+    height: calc(100vh - 76px);
+    display: flex;
+    justify-content: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    flex-direction: column;
+}
+
+
+.heroSectionP1 h6{
+    color: var(--primary-color);
+  
+}
+
+
+
+
+.heroSectionP1 h1{
+   font-family: 'Trochut' ;
+   font-weight: bold;
+}
+
+
+.heroSectionP1  button{
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+
+    width: 200px !important;
+    border-radius: 20px !important;
+    margin-top: 20px;
+
+
+}
+
+
+
+
+/* media-queries */
+@media screen and (max-width: 768px) {
+  .heroSectionP2 {
+    background: none;
+  }
+}

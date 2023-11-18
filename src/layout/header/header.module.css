@@ -6,6 +6,11 @@
   font-size: 1.2rem !important;
 }
 
+
+.nav {
+  background-color: blueviolet !important;
+}
+
 .dropdownBox div {
   right: 5% !important;
   left: unset !important;
@@ -23,3 +28,14 @@
 .signupBtn:hover {
   background-color: var(--primary-color) !important;
 }
+
+
+
+/* media-queries */
+@media screen and (max-width: 768px) {
+  .dropdownBox div {
+    left: 0 !important;
+  }
+}
+
+

@@ -31,7 +31,7 @@ const Header = ({ fixed }) => {
   }
 
   return (
-    <Navbar expand="lg" className="bg-body-tertiary" fixed={fixed ? "top" : ""}>
+    <Navbar expand="lg"  fixed={fixed ? "top" : ""}>
       <Container fluid>
         <Navbar.Brand>
           <Link to={"/"}>
@@ -40,7 +40,18 @@ const Header = ({ fixed }) => {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
-          <Nav className="me-auto my-2 my-lg-0">
+          <Nav className="mx-auto my-2 my-lg-0">
+
+          <Nav.Link>
+              {" "}
+              <Link
+                to={"/"}
+                className="  fs-5 text-black text-decoration-none"
+              >
+                {" "}
+                Home{" "}
+              </Link>{" "}
+            </Nav.Link>
             {user && (
               <Nav.Link>
                 {" "}
