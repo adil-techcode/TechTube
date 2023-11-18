@@ -7,8 +7,9 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import Dropdown from "react-bootstrap/Dropdown";
 import logo from "../../assests/logo.png";
 import styles from "./header.module.css";
-import { Link } from "react-router-dom";
+import { Link  , NavLink} from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import "./header.css"
 
 const Header = ({ fixed }) => {
 
@@ -40,49 +41,49 @@ const Header = ({ fixed }) => {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
-          <Nav className="mx-auto my-2 my-lg-0">
+          <Nav className={`mx-auto my-2 my-lg-0  ${styles.linkBox} `}  >
 
-          <Nav.Link>
+          <Nav.Link  >
               {" "}
-              <Link
+              <NavLink
                 to={"/"}
-                className="  fs-5 text-black text-decoration-none"
+                className="fs-5  text-decoration-none"
               >
                 {" "}
                 Home{" "}
-              </Link>{" "}
+              </NavLink>{" "}
             </Nav.Link>
             {user && (
               <Nav.Link>
                 {" "}
-                <Link
+                <NavLink
                   to={"/courses"}
-                  className="  fs-5 text-black text-decoration-none"
+                  className="  fs-5  text-decoration-none"
                 >
                   {" "}
                   Courses{" "}
-                </Link>{" "}
+                </NavLink>{" "}
               </Nav.Link>
             )}
             <Nav.Link>
               {" "}
-              <Link
+              <NavLink
                 to={"/about"}
-                className="  fs-5 text-black text-decoration-none"
+                className="  fs-5  text-decoration-none"
               >
                 {" "}
                 About{" "}
-              </Link>{" "}
+              </NavLink>{" "}
             </Nav.Link>
             <Nav.Link>
               {" "}
-              <Link
+              <NavLink
                 to={"/contact"}
-                className="  fs-5 text-black text-decoration-none"
+                className="  fs-5  text-decoration-none"
               >
                 {" "}
                 Contact{" "}
-              </Link>{" "}
+              </NavLink>{" "}
             </Nav.Link>
           </Nav>
           {user ? (
