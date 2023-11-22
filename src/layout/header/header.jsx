@@ -111,10 +111,10 @@ const Header = ({ fixed }) => {
           ): (
 
           <div className="d-flex">
-            <Link to={"signin"}  >    <button type="button" className= {`btn btn-success ${styles.signinBtn}` }   >
+            <Link to={"/signin"}  >    <button type="button" className= {`btn btn-success ${styles.signinBtn}` }   >
               Sign in
             </button> </Link>  
-            <Link to={"signup"} > 
+            <Link to={"/signup"} > 
             <button type="button" className= {`btn mx-2 btn-outline-success ${styles.signupBtn}` }   >
               Sign up
             </button> </Link>

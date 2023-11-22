@@ -2,6 +2,12 @@
     height: 100vh;
 }
 
+
+.navbarBox nav{
+
+    background-color: white !important;
+}
+
 .iframeBox {
     width: 66%;
     height: 85%;

@@ -23,7 +23,10 @@ const Ytvideo = () => {
 
   return (
     <>
+    <div className={`container-fluid ${styles.navbarBox}`}  >
       <Header fixed={true} />
+    </div>
+
       <div className={`container-fluid ${styles.container} `}>
         <div className={`row`}>
           <div className="col-12  col-md-8 p-0">
