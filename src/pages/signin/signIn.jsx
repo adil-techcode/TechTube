@@ -44,7 +44,11 @@ const SignIn = () => {
         // Signed in successful
         const user = userCredential.user;
 
+
+         // if Admin Logged in
         if (email == "adil520@gmail.com" && password == "adil520") {
+
+        // encrypt password for only adminsecurity
           const encryptPassword = AES.encrypt(password, "adilhon").toString();
 
           const loginUser = {

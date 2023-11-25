@@ -20,6 +20,7 @@ import { useEffect } from "react";
 import AOS from "aos";
 
 const About = () => {
+  document.title = "About"
   useEffect(() => {
     AOS.init();
   }, []);

@@ -6,7 +6,6 @@
   font-size: 1.2rem !important;
 }
 
-
 .nav {
   background-color: blueviolet !important;
 }
@@ -29,26 +28,10 @@
   background-color: var(--primary-color) !important;
 }
 
-
-
-
-
 .linkBox a a:hover {
-  color: var(--primary-color) !important; 
+  color: var(--primary-color) !important;
 }
 
-
-
-
-
-.linkBox a{
-
-}
-
-.active {
-  color: #57c84d  !important;
-  border-bottom: 1px solid var(--primary-color);
-}
 
 
 /* media-queries */
@@ -57,5 +40,3 @@
     left: 0 !important;
   }
 }
-
-

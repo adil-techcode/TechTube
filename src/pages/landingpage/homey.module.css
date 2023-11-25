@@ -2,9 +2,7 @@
   background-image: url("../../assests/home/shape-001.png");
   background-repeat: no-repeat;
   background-position: top right;
-  /* background-size:contain; */
   height: calc(100vh - 76px);
-  /* height: 100vh; */
 }
 
 .heroSectionSvg {
@@ -58,7 +56,6 @@
   align-items: center;
   border-radius: 10px;
 }
-
 
 .statsSectionsvg svg {
   width: 50px;
@@ -120,8 +117,6 @@
   font-family: "Trochut";
   font-weight: bold;
 }
-
-
 
 .footer footer {
   position: static !important;

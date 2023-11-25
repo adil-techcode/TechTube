@@ -15,29 +15,30 @@ import NotFoundPage from "../errorpages/404.jsx";
 
 
 
+// Protected Route if User is  logged in
 const ProtectedRoute = ({ element: Element }) => {
-    try{
-        const user = JSON.parse(localStorage.getItem("user")); // Parse the user data from localStorage
-        return user ? <Element /> : <Navigate to="/signin" />;
-    }
-    catch(error){
-        return <Navigate to="/signin" />;
-    }
-
+  try {
+    const user = JSON.parse(localStorage.getItem("user")); // Parse the user data from localStorage
+    return user ? <Element /> : <Navigate to="/signin" />;
+  } catch (error) {
+    return <Navigate to="/signin" />;
+  }
 };
 
 
+// AuthRoute if login not login then view this route
 const AuthRoute = ({ element: Element }) => {
-    try{
-        const user = JSON.parse(localStorage.getItem("user")); // Parse the user data from localStorage
-        return user ? <Navigate to="/courses" /> :  <Element />;
-    }
-    catch(error){
-        return <Navigate to="/signin" />;
-    }
-
+  try {
+    const user = JSON.parse(localStorage.getItem("user")); // Parse the user data from localStorage
+    return user ? <Navigate to="/courses" /> : <Element />;
+  } catch (error) {
+    return <Navigate to="/signin" />;
+  }
 };
 
+
+
+// Admin Route if Admin Password == current userpassword encrypt password store in local storage for security
 const AdminRoute = ({ element: Element }) => {
   const user = JSON.parse(localStorage.getItem("user"));
   if (user) {
@@ -56,23 +57,23 @@ const AdminRoute = ({ element: Element }) => {
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home/>,
+    element: <Home />,
   },
   {
     path: "/about",
-    element: <About/>,
+    element: <About />,
   },
   {
     path: "/contact",
-    element: <Contact/>,
+    element: <Contact />,
   },
   {
     path: "/signin",
-    element:   <AuthRoute element={SignIn} /> ,
+    element: <AuthRoute element={SignIn} />,
   },
   {
     path: "/signup",
-    element: <AuthRoute element={Signup} />  ,
+    element: <AuthRoute element={Signup} />,
   },
   {
     path: "/courses",
@@ -88,11 +89,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/forbiddenpage",
-    element: <ForbiddenPage/>,
+    element: <ForbiddenPage />,
   },
   {
     path: "*",
-    element: <NotFoundPage/>,
+    element: <NotFoundPage />,
   },
 ]);
 

@@ -1,19 +1,20 @@
-import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
-import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
 import Dropdown from "react-bootstrap/Dropdown";
 import logo from "../../assests/logo.png";
 import styles from "./header.module.css";
 import { Link  , NavLink} from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import "./header.css"
+
 
 const Header = ({ fixed }) => {
 
-  const navigate = useNavigate();
+  const navigate = useNavigate();  // hook for navigate pages
+
+
+
+  // Fetching User from local storage
   var user;
   try {
     user = JSON.parse(localStorage.getItem("user"));
@@ -22,8 +23,9 @@ const Header = ({ fixed }) => {
   }
 
 
-  const signout = () => {
-   
+
+  // function for signout User
+  const signout = () => { 
     const confirmLogout = window.confirm("Are you sure you want to logout?");
     if(confirmLogout){
       localStorage.removeItem("user");
@@ -86,6 +88,8 @@ const Header = ({ fixed }) => {
               </NavLink>{" "}
             </Nav.Link>
           </Nav>
+
+          {/* Conditional Rendering Here User is Login or not */}
           {user ? (
             <div className="d-flex">
               <img

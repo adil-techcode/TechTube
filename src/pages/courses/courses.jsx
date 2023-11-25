@@ -9,11 +9,11 @@ import Footer from "../../layout/footer/footer";
 import { FaSearch } from "react-icons/fa";
 import { motion } from "framer-motion";
 
-
 const Courses = () => {
   const db = getDatabase();
-  
+
   const variants = {
+    // motion object for animation
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 },
   };
@@ -22,17 +22,12 @@ const Courses = () => {
   const [searchCourses, setSearchCourses] = useState();
 
   useEffect(() => {
+    document.title = "Courses";
     fetchPlaylistId();
   }, []);
 
-
-
-
-
-
-
+  // Function for fetching playlist ids from firebase database
   const fetchPlaylistId = async () => {
-
     const playlists = [];
     const Couref = ref(db, "courses/");
 
@@ -60,6 +55,7 @@ const Courses = () => {
     });
   };
 
+  // function for fecthing playlist detail from youtube API
   const fetchPlaylistDetail = async (ids) => {
     let playlistData = [];
     for (var i = 0; i < ids.length; i++) {
@@ -75,6 +71,7 @@ const Courses = () => {
     setSearchCourses(playlistData);
   };
 
+  // Function fOR Search functionality in courses
   const handlesearch = (value) => {
     const searchArray = searchCourses;
     const researchdata = searchArray.filter((course) =>
@@ -85,7 +82,7 @@ const Courses = () => {
 
   return (
     <>
-      <Header  fixed = {false} />
+      <Header fixed={false} />
 
       <div className="container mt-5">
         <div className="row">
@@ -106,7 +103,7 @@ const Courses = () => {
           </div>
         </div>
 
-        <div className={`row `} style={{marginBottom : "55px"}} >
+        <div className={`row `} style={{ marginBottom: "55px" }}>
           {courses
             ? courses.map((course, index) => (
                 <motion.div
@@ -151,6 +148,7 @@ const Courses = () => {
                 </motion.div>
               ))
             : Array.from({ length: 8 }, (_, index) => (
+                // Placeholder Animation Elements Bootsrap
                 <div
                   key={index}
                   className="   col-12 col-sm-6  col-md-4 col-lg-3  mt-3 "

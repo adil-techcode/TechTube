@@ -63,10 +63,7 @@ const Signup = () => {
                
             const coursesRef = ref(database, `users/${user.uid}`);
 
-            // Use the push method to generate a random key for the new data   
-           
-            
-            // Set the data with the random key
+            // Set the data to firebase database
             set(coursesRef, {
               userId: user.uid,
               name : displayName ,
@@ -74,7 +71,7 @@ const Signup = () => {
             })
               .then(() => {
 
-             // if update and register successful navigate to login screen
+             // if update and register  successful navigate to login screen
             setTimeout(() => {
               setLoading(false);
               navigate("/signin");

@@ -17,13 +17,12 @@ import { MdVideoLibrary } from "react-icons/md";
 import { FaPlus } from "react-icons/fa6";
 import Modal from "react-bootstrap/Modal";
 import Loader from "../../components/loader";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast } from "react-toastify";
 import Chart from "../../components/chart/chart";
 import Footer from "../../layout/footer/footer";
 
-
 const Admin = () => {
-  const database = getDatabase(firebaseApp);
+  const database = getDatabase(firebaseApp); // Config Firebase Database
 
   const [playlistId, setPlaylistId] = useState("");
   const [usersStats, setUsersStats] = useState("");
@@ -34,12 +33,14 @@ const Admin = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    document.title = "Admin"
     fetchUsersCounts();
-    fetchGroupCounts();
+    fetchCoursesCounts();
     fetchUserStats();
   }, [database]);
 
-  const fetchGroupCounts = () => {
+  // Function for Count Total Courses Store in Firebase
+  const fetchCoursesCounts = () => {
     const coursesRef = ref(database, "courses/");
     onValue(coursesRef, (snapshot) => {
       const data = snapshot.val();
@@ -47,6 +48,7 @@ const Admin = () => {
     });
   };
 
+  // Function for Count Total Userr Registered in Firebase
   const fetchUsersCounts = () => {
     const coursesRef = ref(database, "users/");
     onValue(coursesRef, (snapshot) => {
@@ -55,16 +57,20 @@ const Admin = () => {
     });
   };
 
+  // Fetch last month Users Stats last 4 week
   const fetchUserStats = async () => {
+
     const currentDate = new Date();
     const currentTimestamp = currentDate.getTime();
 
-    const fourWeeksAgoTimestamp =
-      currentTimestamp - 4 * 7 * 24 * 60 * 60 * 1000;
-    const threeWeeksAgoTimestamp =
-      currentTimestamp - 3 * 7 * 24 * 60 * 60 * 1000;
+     // Times
+    const fourWeeksAgoTimestamp =currentTimestamp - 4 * 7 * 24 * 60 * 60 * 1000;
+    const threeWeeksAgoTimestamp =currentTimestamp - 3 * 7 * 24 * 60 * 60 * 1000;
     const twoWeeksAgoTimestamp = currentTimestamp - 2 * 7 * 24 * 60 * 60 * 1000;
     const lastWeekTimestamp = currentTimestamp - 1 * 7 * 24 * 60 * 60 * 1000;
+
+
+    console.log(currentTimestamp)
 
     try {
       const week1ref = query(
@@ -95,6 +101,9 @@ const Admin = () => {
         endAt(currentTimestamp)
       );
 
+      console.log(lastWeekTimestamp)
+      console.log(currentTimestamp)
+
       // Use Promise.all to fetch data for all weeks concurrently
       const [week1data, week2data, week3data, week4data] = await Promise.all([
         get(week1ref),
@@ -102,7 +111,7 @@ const Admin = () => {
         get(week3ref),
         get(week4ref),
       ]);
-
+     
       // Process the results
       const week1 = week1data.val() === null ? 0 : week1data.val();
       const week2 = week2data.val() === null ? 0 : week2data.val();
@@ -115,25 +124,28 @@ const Admin = () => {
         Object.keys(week3).length,
         Object.keys(week4).length,
       ];
-
+      
+      console.log(result)
       setUsersStats(result);
     } catch (error) {
       console.error("Error fetching data:", error.message);
     }
   };
 
+
+  //Methods to add playlist in Firebase Database 
+  // User Store plalist Id 34 character long
   const handleplaylist = (e) => {
-   
     setMsg("");
-    
-    if(playlistId.length  !== 34){
-      setMsg("Invalid Playlist ID")
-      return
+
+    if (playlistId.length !== 34) {
+      setMsg("Invalid Playlist ID");
+      return;
     }
 
     e.preventDefault();
 
-    setLoading(true)
+    setLoading(true);
     const coursesRef = ref(database, "courses");
 
     // Use the push method to generate a random key for the new data
@@ -144,11 +156,11 @@ const Admin = () => {
       playlistId: playlistId,
     })
       .then(() => {
-           setTimeout(() => {
-            setShowModal(false)
-            setLoading(false)
-             toast.success("Playlist added successfully");
-           }, 1000);
+        setTimeout(() => {
+          setShowModal(false);
+          setLoading(false);
+          toast.success("Playlist added successfully");
+        }, 1000);
       })
       .catch((error) => {
         console.error("Error adding data:", error);
@@ -158,82 +170,82 @@ const Admin = () => {
   return (
     <>
       <Header />
-      
-    {usersCounts && coursesCounts ?  (
-      <div className="container"  style={{marginBottom : "55px"}} >
-        <div className="row mt-3  mb-5 justify-content-center ">
-          <div
-            className={`col-11 col-sm-5 mt-3  p-4 mx-3 shadow-lg rounded  ${styles.userBox}`}
-          >
-            <span>
-              {" "}
-              <FaUsers size={30} />{" "}
-            </span>
 
-            <h3 className="mt-2"> {usersCounts} </h3>
-            <h6> Total Users </h6>
-          </div>
-          <div
-            className={`col-11 col-sm-5  p-4 mt-3 shadow-lg rounded ${styles.coursesBox}`}
-          >
-            <div>
-              <span className={` ${styles.courseIcon} `}>
+      {usersCounts && coursesCounts ? (
+        <div className="container" style={{ marginBottom: "55px" }}>
+          <div className="row mt-3  mb-5 justify-content-center ">
+            <div
+              className={`col-11 col-sm-5 mt-3  p-4 mx-3 shadow-lg rounded  ${styles.userBox}`}
+            >
+              <span>
                 {" "}
-                <MdVideoLibrary size={30} />{" "}
+                <FaUsers size={30} />{" "}
               </span>
-              <h3 className="mt-3"> {coursesCounts} </h3>
-              <h6> Total Courses </h6>
-            </div>
 
-            <div>
-              <span
-                className={` ${styles.addCourseIcon} `}
-                onClick={() => {
-                  setShowModal(true);
-                }}
-              >
-                {" "}
-                <FaPlus />{" "}
-              </span>
+              <h3 className="mt-2"> {usersCounts} </h3>
+              <h6> Total Users </h6>
+            </div>
+            <div
+              className={`col-11 col-sm-5  p-4 mt-3 shadow-lg rounded ${styles.coursesBox}`}
+            >
+              <div>
+                <span className={` ${styles.courseIcon} `}>
+                  {" "}
+                  <MdVideoLibrary size={30} />{" "}
+                </span>
+                <h3 className="mt-3"> {coursesCounts} </h3>
+                <h6> Total Courses </h6>
+              </div>
+
+              <div>
+                <span
+                  className={` ${styles.addCourseIcon} `}
+                  onClick={() => {
+                    setShowModal(true);
+                  }}
+                >
+                  {" "}
+                  <FaPlus />{" "}
+                </span>
+              </div>
             </div>
           </div>
+
+          {usersStats && (
+            <div className="row justify-content-center   ">
+              <div className="col-10 text-center  rounded shadow-lg ">
+                <Chart stats={usersStats} />
+              </div>
+            </div>
+          )}
         </div>
+      ) : (
+        // Placeholder for Data
+        <div className="container mt-5 ">
+          <p class="placeholder-glow d-flex justify-content-around ">
+            <span
+              class="placeholder  col-12 col-md-5 mx-2  mt-3 rounded "
+              style={{ height: "300px" }}
+            ></span>
+            <span
+              class="placeholder  col-12 col-md-5 mx-2  mt-3  rounded "
+              style={{ height: "300px" }}
+            ></span>
+          </p>
 
- { usersStats  && 
-        <div className="row justify-content-center   ">
-          <div className="col-10 text-center  rounded shadow-lg ">
-        <Chart stats={usersStats} />
-          </div>
+          <p class="placeholder-glow d-flex justify-content-around ">
+            <span
+              class="placeholder  col-11  mx-2  mt-3 rounded "
+              style={{ height: "400px" }}
+            ></span>
+          </p>
         </div>
-    }
-      </div> 
-      ) :(   
-      
-        // Placeholder for Data 
-     <div className="container mt-5 ">
-     <p class="placeholder-glow d-flex justify-content-around ">
-  <span class="placeholder  col-12 col-md-5 mx-2  mt-3 rounded " style={{height:"300px"}} ></span>
-  <span class="placeholder  col-12 col-md-5 mx-2  mt-3  rounded " style={{height:"300px"}} ></span>
-  
-</p>
+      )}
 
-<p class="placeholder-glow d-flex justify-content-around ">
-  <span class="placeholder  col-11  mx-2  mt-3 rounded " style={{height:"400px"}} ></span>
+      {/* Footer */}
+      <Footer />
 
-  
-</p>
-     </div>
-
-       )}
-    
-
-
-
-{/* Footer */}
-      <Footer/>
-
-
-{/* Modal for Add Playlist */}
+      {/* Modal for Add Playlist */}
       <Modal
         size="md"
         aria-labelledby="contained-modal-title-vcenter"
@@ -247,9 +259,11 @@ const Admin = () => {
         </Modal.Header>
         <Modal.Body>
           <div className={`${styles.modalBody}`}>
-             {msg && <div class="alert alert-danger" role="alert">
-            {msg}
-            </div>  }
+            {msg && (
+              <div class="alert alert-danger" role="alert">
+                {msg}
+              </div>
+            )}
             <form>
               <input
                 type="text"
@@ -282,10 +296,10 @@ const Admin = () => {
           </button>
         </Modal.Footer>
       </Modal>
-     
-     {/* Toast Message */}
+
+      {/* Toast Message */}
       <ToastContainer />
-      {loading &&  <Loader/> } 
+      {loading && <Loader />}
     </>
   );
 };

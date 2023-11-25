@@ -12,9 +12,11 @@ const Ytvideo = () => {
   const [video, setVideo] = useState();
 
   useEffect(() => {
+    document.title = "Videos";
     fetchPlaylistItems();
   }, []);
 
+  // fetch platlist videos from youtube api
   const fetchPlaylistItems = async () => {
     const res = await YoutubeAPI.playlistItems(id);
     setVideo(res[0].snippet.resourceId.videoId);
@@ -23,9 +25,9 @@ const Ytvideo = () => {
 
   return (
     <>
-    <div className={`container-fluid ${styles.navbarBox}`}  >
-      <Header fixed={true} />
-    </div>
+      <div className={`container-fluid ${styles.navbarBox}`}>
+        <Header fixed={true} />
+      </div>
 
       <div className={`container-fluid ${styles.container} `}>
         <div className={`row`}>
@@ -55,11 +57,14 @@ const Ytvideo = () => {
                       }}
                     >
                       {" "}
-                     {video ===  item.snippet.resourceId.videoId   ?   
-                     ( <span style={{color:"blue"}} >    {item.snippet.title}  </span> )
-                    : (
-                      <span >   {item.snippet.title}  </span> 
-                    )    }  
+                      {video === item.snippet.resourceId.videoId ? (
+                        <span style={{ color: "blue" }}>
+                          {" "}
+                          {item.snippet.title}{" "}
+                        </span>
+                      ) : (
+                        <span> {item.snippet.title} </span>
+                      )}
                     </h6>
                   </div>
                 ))}

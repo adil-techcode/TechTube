@@ -4,6 +4,15 @@
 }
 
 
+.active {
+  color: #57c84d  !important;
+  border-bottom: 1px solid var(--primary-color);
+}
+
+.nav-link  a{
+  color: black ;
+}
+
 
 
 

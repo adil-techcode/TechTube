@@ -1,6 +1,5 @@
 // yup validation  schema for signup form validation
 
-
 import * as yup from "yup";
 
 const signUpSchema = yup.object({
