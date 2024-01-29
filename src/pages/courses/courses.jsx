@@ -30,10 +30,12 @@ const Courses = () => {
   const fetchPlaylistId = async () => {
     const playlists = [];
     const Couref = ref(db, "courses/");
+    
 
     const prom = new Promise((resolve, reject) => {
       onValue(Couref, (snapshot) => {
         const data = snapshot.val();
+        console.log(snapshot)
         if (data) {
           Object.keys(data).forEach((randomKey) => {
             const courseData = data[randomKey];
@@ -48,10 +50,12 @@ const Courses = () => {
     });
 
     prom.then((data) => {
+      console.log(data  )
       fetchPlaylistDetail(data);
     });
     prom.catch((error) => {
-      console.log(error);
+      console.log("error bahi")
+      // console.log(error);
     });
   };
 

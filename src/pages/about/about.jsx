@@ -5,7 +5,7 @@ import Footer from "../../layout/footer/footer";
 
 import Aboutsvg from "../../components/svg/aboutsvg";
 
-import pfp from "../../assests/about/profile-pic-9dc398d4.png";
+import pfp from "../../assests/about/images-removebg-preview.png";
 import {
     FaFacebook,
     FaTwitter,
@@ -75,7 +75,7 @@ const About = () => {
           >
             <h1> Meet the Developer </h1>
             <p>
-              Hello, I'm Adil Amin, the founder, and developer behind{" "}
+              Hello, We are Team Rimsha Dua, the founder, and developer behind{" "}
               <strong> Techtube </strong> . With a passion for technology and a
               commitment to education, I created this platform to foster a
               community of knowledge-sharing and skill development. My goal is
@@ -92,27 +92,27 @@ const About = () => {
             </p>
 
             <div className={`${styles.SocailWrapper}`}>
-            <a  href="https://www.linkedin.com/in/adil-amin-bhatti520">
+            <a  href="#">
               {" "}
               <FaLinkedin size={30} color="white" />{" "}
             </a>
-            <a  href="https://github.com/adil-techcode"  >
+            <a  href="#"  >
               {" "}
               <FaGithub size={30} color="white" />{" "}
             </a>
-            <a  href="https://wa.me/qr/APPS2AEJBU4RK1">
+            <a  href="#">
               {" "}
               <FaWhatsapp size={30} color="white" />{" "}
             </a>
-            <a href="https://www.instagram.com/adil_amin_bhatti">
+            <a href="#">
               {" "}
               <FaInstagram size={30} color="white" />{" "}
             </a>
-            <a href="https://twitter.com/AD___520?t=iatHVCPW8K11FItZOLXneg&s=09">
+            <a href="#">
               {" "}
               <FaTwitter size={30} color="white" />{" "}
             </a>
-            <a  href="https://www.facebook.com/profile.php?id=100018624416353&mibextid=ZbWKwL"  >
+            <a  href="#"  >
               {" "}
               <FaFacebook size={30} color="white" />{" "}
             </a>

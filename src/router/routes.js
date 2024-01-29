@@ -46,7 +46,7 @@ const AdminRoute = ({ element: Element }) => {
       const pass = AES.decrypt(user.password, "adilhon").toString(
         CryptoJS.enc.Utf8
       );
-      return pass == "adil520" ? <Element /> : <Navigate to="/signin" />;
+      return pass == "admin4321" ? <Element /> : <Navigate to="/signin" />;
     } catch (error) {
       return <Navigate to="/forbiddenpage" />;
     }

@@ -30,27 +30,27 @@ const Contact = () => {
           <h1> Contact Us </h1>
 
           <div className={`${styles.SocailWrapper}`}>
-            <a href="https://www.linkedin.com/in/adil-amin-bhatti520">
+            <a href="#">
               {" "}
               <FaLinkedin size={30} color="white" />{" "}
             </a>
-            <a href="https://github.com/adil-techcode">
+            <a href="#">
               {" "}
               <FaGithub size={30} color="white" />{" "}
             </a>
-            <a href="https://wa.me/qr/APPS2AEJBU4RK1">
+            <a href="#">
               {" "}
               <FaWhatsapp size={30} color="white" />{" "}
             </a>
-            <a href="https://www.instagram.com/adil_amin_bhatti">
+            <a href="#">
               {" "}
               <FaInstagram size={30} color="white" />{" "}
             </a>
-            <a href="https://twitter.com/AD___520?t=iatHVCPW8K11FItZOLXneg&s=09">
+            <a href="#">
               {" "}
               <FaTwitter size={30} color="white" />{" "}
             </a>
-            <a href="https://www.facebook.com/profile.php?id=100018624416353&mibextid=ZbWKwL">
+            <a href="#">
               {" "}
               <FaFacebook size={30} color="white" />{" "}
             </a>
